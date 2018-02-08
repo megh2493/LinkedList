@@ -1,0 +1,14 @@
+public ListNode deleteDuplicates(ListNode head) {
+        Stack<Integer> s = new Stack<Integer>();
+        if(head == null) return null;
+        s.push(head.val);
+        ListNode cur = head;
+        while(cur!=null && cur.next!=null)
+            if(cur.next.val == s.peek())
+                cur.next = cur.next.next;
+            else{
+                s.push(cur.next.val);
+                cur = cur.next;
+            }
+        return head;
+    }
